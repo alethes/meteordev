@@ -1,32 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 if [ "$1" = "install" ]; then
   if [ -f /usr/local/bin/meteordev ]; then
     echo "The meteordev script seems to be already installed in /usr/local/bin/meteordev."
     echo "Run 'meteordev' to install, update or use the bleeding edge Meteor."
   else
     echo "Installing the meteordev script in /usr/local/bin..."
-    sudo cp meteordev /usr/local/bin/meteordev
+    sudo cp $0 /usr/local/bin/meteordev
     sudo chmod +x /usr/local/bin/meteordev
     echo "Done. Run 'meteordev' to install, update or use the bleeding edge Meteor."
   fi
 elif [ ! -d ~/.meteordev ]; then
   echo "Downloading bleeding edge Meteor to ~/.meteordev..."
-  git clone git://github.com/meteor/meteor.git ~/.meteordev
+  #git clone git://github.com/meteor/meteor.git ~/.meteordev
   echo "Meteor downloaded."
-  cd ~/.meteordev
+  #cd ~/.meteordev
   echo "Downloading Meteor dependencies..."
-  ./meteor
+  #./meteor
   echo "The bleeding edge Meteor was installed in ~/.meteordev."
   if [ ! -f /usr/local/bin/meteordev ]; then
     echo
-    read -p "Shall I install this script in /usr/local/bin/meteordev? " -n 1 -r
-    if [ "$REPLY" =~ ^[Yy]$ ]; then
+    #if test -n "$BASH_VERSION"; then
+    #Reads just one character. Doesn't wait for the newline
+    read -n 1 -p "Shall I install this script in /usr/local/bin/meteordev (Y/N)? " inst
+    #else
+    #read "Shall I install this script in /usr/local/bin/meteordev (Y/N)? "
+    echo "$inst" | grep -q "^[Yy]$"
+    if [ $? -eq 0 ]; then
       echo
       echo "OK, installing meteordev..."
-      sudo cp meteordev /usr/local/bin/meteordev
+      sudo cp $0 /usr/local/bin/meteordev
       sudo chmod +x /usr/local/bin/meteordev
       echo "Done. Run 'meteordev' to install, update or use the bleeding edge Meteor."
     else
+      echo
       echo "OK, then... :("
     fi
   fi
