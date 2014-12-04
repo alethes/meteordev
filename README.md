@@ -25,7 +25,7 @@ cd test-app
 meteordev
 ```
 
-You can also, at any time, pull the latest commits from the Meteor repository with `meteor update`.
+You can also, at any time, pull the latest commits from the Meteor repository with `meteordev update`.
 
 
 Why?
