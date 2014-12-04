@@ -23,6 +23,7 @@ elif [ ! -d ~/.meteordev ]; then
       echo
       echo "OK, installing meteordev..."
       sudo cp meteordev /usr/local/bin/meteordev
+      sudo chmod +x /usr/local/bin/meteordev
       echo "Done. Run 'meteordev' to install, update or use the bleeding edge Meteor."
     else
       echo "OK, then... :("
