@@ -18,7 +18,7 @@ The script will download and install the latest Meteor devel version in `~/.mete
 It will also ask your permission to put itself in `/usr/local/bin/meteordev` so it can (presumably) be found in the system's path.
 
 After the script is done running for the first time, it functions as a drop-in replacement for the `meteor` command.
-It means you can run your create, run and manage your apps using the bleeding edge Meteor version:
+It means you can create, run and manage your apps using the bleeding edge Meteor version:
 ```
 meteor create test-app #or 'meteordev create test-app'
 cd test-app
