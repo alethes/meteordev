@@ -8,7 +8,7 @@ Installation
 ------------
 ```
 git clone git@github.com:alethes/meteordev
-./meteordev/meteordev
+/bin/bash ./meteordev/meteordev
 ```
 
 Usage
