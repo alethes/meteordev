@@ -1,11 +1,12 @@
-#!/bin/bash
-if [[ $1 = "install" ]]; then
+#!/bin/sh
+if [ "$1" = "install" ]; then
   if [ -f /usr/local/bin/meteordev ]; then
     echo "The meteordev script seems to be already installed in /usr/local/bin/meteordev."
     echo "Run 'meteordev' to install, update or use the bleeding edge Meteor."
   else
     echo "Installing the meteordev script in /usr/local/bin..."
-    sudo mv meteordev /usr/local/bin/meteordev
+    sudo cp meteordev /usr/local/bin/meteordev
+    sudo chmod +x /usr/local/bin/meteordev
     echo "Done. Run 'meteordev' to install, update or use the bleeding edge Meteor."
   fi
 elif [ ! -d ~/.meteordev ]; then
@@ -19,7 +20,7 @@ elif [ ! -d ~/.meteordev ]; then
   if [ ! -f /usr/local/bin/meteordev ]; then
     echo
     read -p "Shall I install this script in /usr/local/bin/meteordev? " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [ "$REPLY" =~ ^[Yy]$ ]; then
       echo
       echo "OK, installing meteordev..."
       sudo cp meteordev /usr/local/bin/meteordev
@@ -32,7 +33,7 @@ elif [ ! -d ~/.meteordev ]; then
   echo "Now, you can use this script the same way as the 'meteor' command."
   echo "Run 'meteordev update' anytime to quickly update your"
   echo "bleeding edge Meteor copy to the latest version."
-elif [[ $1 = "update" ]]; then
+elif [ "$1" = "update" ]; then
   echo "Updating bleeding edge Meteor in ~/.meteordev..."
   cd ~/.meteordev
   git pull git://github.com/meteor/meteor.git
