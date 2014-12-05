@@ -11,11 +11,11 @@ if [ "$1" = "install" ]; then
   fi
 elif [ ! -d ~/.meteordev ]; then
   echo "Downloading bleeding edge Meteor to ~/.meteordev..."
-  #git clone git://github.com/meteor/meteor.git ~/.meteordev
+  git clone git://github.com/meteor/meteor.git ~/.meteordev
   echo "Meteor downloaded."
-  #cd ~/.meteordev
+  cd ~/.meteordev
   echo "Downloading Meteor dependencies..."
-  #./meteor
+  ./meteor
   echo "The bleeding edge Meteor was installed in ~/.meteordev."
   if [ ! -f /usr/local/bin/meteordev ]; then
     echo
